@@ -25,7 +25,8 @@ module.exports = class extends Command {
     run = async (interaction) => {
         var urlDev = vars.urlDev
         var urlProd = vars.urlProd
-        var id = interaction.options.getString("id")
+        var id = interaction.user.id
+        var id2 = interaction.options.getString("id")
         const embed = new MessageEmbed()
             .setAuthor(`✅ Sucesso`)
             .setDescription(`**Lisense** gerada com sucesso para o usuário de ID: **`+ id +`**`)
@@ -33,16 +34,20 @@ module.exports = class extends Command {
         const embedError = new MessageEmbed().setAuthor(`❌ Erro ao criar licença.`).setDescription('Ja encontramos uma licença desse usuário em nosso **banco de dados**.').setColor("#2f3136")
         const embedError1 = new MessageEmbed().setAuthor(`❌ Erro ao criar licença.`).setDescription('Você não consegue fazer isso :( .').setColor("#2f3136")
 
+        var auth2 = (id * Math.PI) * 94367098231
+
         var info = {
-            "idUser": id
+            "id": id,
+            "idUser": id2,
+            "auth": auth2
         }
 
         if (!interaction.member.permissions.has('ADMINISTRATOR')) return interaction.reply({
-            embeds: [embedError],
+            embeds: [embedError1],
             ephemeral: true
         })
 
-        axios.post(urlDev + '/createlisense', info)
+        axios.post(urlProd + '/createlisense', info)
         .then((res) => {
             interaction.reply({
                 embeds: [embed],

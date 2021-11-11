@@ -30,7 +30,7 @@ module.exports = class extends Command {
             ephemeral: true
         })
 
-        axios.get(urlDev + '/test')
+        axios.get(urlProd + '/test')
         .then((res) => {
             interaction.reply({
                 embeds: [embed],

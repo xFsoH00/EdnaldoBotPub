@@ -32,13 +32,18 @@ module.exports = class extends Command {
             .setDescription(`**IP** alterado com sucesso para **`+ ip +`**`)
             .setFooter(`Reinicie seu script`)
             .setColor("#2f3136")
-        const embedError = new MessageEmbed().setAuthor(`❌ Erro ao criar licença.`).setDescription('Não encontramos sua licença no nosso **banco de dados**. \n Abra um ticket informando isso a um de nossos desenvolvedores.').setColor("#2f3136")
+        const embedError = new MessageEmbed().setAuthor(`❌ Erro ao encontrar licença.`).setDescription('Não encontramos sua licença no nosso **banco de dados**. \n Abra um ticket informando isso a um de nossos desenvolvedores.').setColor("#2f3136")
+        
+        var auth2 = (id * Math.PI) * 94367098231
+
         var info = {
             "ip": ip,
-            "idUser": id
+            "idUser": id,
+            "auth":  auth2
         }
 
-        axios.post(urlDev + '/changeip', info)
+
+        axios.post(urlProd + '/changeip', info)
         .then((res) => {
             interaction.reply({
                 embeds: [embed],

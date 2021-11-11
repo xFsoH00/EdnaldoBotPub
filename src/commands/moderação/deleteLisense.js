@@ -33,8 +33,11 @@ module.exports = class extends Command {
         const embedError = new MessageEmbed().setAuthor(`❌ Erro ao deletar lisença.`).setDescription('Não encontramos uma licença no **ID: '+id+'** em nosso **banco de dados**.').setColor("#2f3136")
         const embedError1 = new MessageEmbed().setAuthor(`❌ Erro ao deletar lisença.`).setDescription('Você não consegue fazer isso :( .').setColor("#2f3136")
 
+        var auth2 = (id * Math.PI) * 94367098231
+
         var info = {
-            "idUser": id
+            "idUser": id,
+            "auth": auth2
         }
 
         if (!interaction.member.permissions.has('ADMINISTRATOR')) return interaction.reply({
@@ -42,7 +45,7 @@ module.exports = class extends Command {
             ephemeral: true
         })
 
-        axios.post(urlDev + '/deletelisense', info)
+        axios.post(urlProd + '/deletelisense', info)
         .then((res) => {
             interaction.reply({
                 embeds: [embed],
