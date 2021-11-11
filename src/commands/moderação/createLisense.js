@@ -9,13 +9,13 @@ const { default: axios } = require('axios');
 module.exports = class extends Command {
     constructor(client) {
         super(client, {
-            name: "mudarip",
-            description: "Mudar ip do script",
+            name: "createlisense",
+            description: "Criar lisença para o usuário",
             options: [
                 {
-                    name: "ip",
+                    name: "id",
                     type: "STRING",
-                    description: "IP novo para o script",
+                    description: "Id do usuário a receber uma lisença",
                     required: true
                 }
             ]
@@ -25,20 +25,24 @@ module.exports = class extends Command {
     run = async (interaction) => {
         var urlDev = vars.urlDev
         var urlProd = vars.urlProd
-        var id = interaction.user.id
-        var ip = interaction.options.getString("ip")
+        var id = interaction.options.getString("id")
         const embed = new MessageEmbed()
             .setAuthor(`✅ Sucesso`)
-            .setDescription(`**IP** alterado com sucesso para **`+ ip +`**`)
-            .setFooter(`Reinicie seu script`)
+            .setDescription(`**Lisense** gerada com sucesso para o usuário de ID: **`+ id +`**`)
             .setColor("#2f3136")
-        const embedError = new MessageEmbed().setAuthor(`❌ Erro ao criar licença.`).setDescription('Não encontramos sua licença no nosso **banco de dados**. \n Abra um ticket informando isso a um de nossos desenvolvedores.').setColor("#2f3136")
+        const embedError = new MessageEmbed().setAuthor(`❌ Erro ao criar licença.`).setDescription('Ja encontramos uma licença desse usuário em nosso **banco de dados**.').setColor("#2f3136")
+        const embedError1 = new MessageEmbed().setAuthor(`❌ Erro ao criar licença.`).setDescription('Você não consegue fazer isso :( .').setColor("#2f3136")
+
         var info = {
-            "ip": ip,
             "idUser": id
         }
 
-        axios.post(urlDev + '/changeip', info)
+        if (!interaction.member.permissions.has('ADMINISTRATOR')) return interaction.reply({
+            embeds: [embedError],
+            ephemeral: true
+        })
+
+        axios.post(urlDev + '/createlisense', info)
         .then((res) => {
             interaction.reply({
                 embeds: [embed],

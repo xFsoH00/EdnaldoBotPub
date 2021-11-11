@@ -9,13 +9,13 @@ const { default: axios } = require('axios');
 module.exports = class extends Command {
     constructor(client) {
         super(client, {
-            name: "mudarip",
-            description: "Mudar ip do script",
+            name: "deletelisense",
+            description: "Remover lisença de um usuário",
             options: [
                 {
-                    name: "ip",
+                    name: "id",
                     type: "STRING",
-                    description: "IP novo para o script",
+                    description: "Id do usuário para a remoção",
                     required: true
                 }
             ]
@@ -25,20 +25,24 @@ module.exports = class extends Command {
     run = async (interaction) => {
         var urlDev = vars.urlDev
         var urlProd = vars.urlProd
-        var id = interaction.user.id
-        var ip = interaction.options.getString("ip")
+        var id = interaction.options.getString("id")
         const embed = new MessageEmbed()
             .setAuthor(`✅ Sucesso`)
-            .setDescription(`**IP** alterado com sucesso para **`+ ip +`**`)
-            .setFooter(`Reinicie seu script`)
+            .setDescription(`**Lisense** do usuário de ID: **`+ id +`** apagada com sucesso.`)
             .setColor("#2f3136")
-        const embedError = new MessageEmbed().setAuthor(`❌ Erro ao criar licença.`).setDescription('Não encontramos sua licença no nosso **banco de dados**. \n Abra um ticket informando isso a um de nossos desenvolvedores.').setColor("#2f3136")
+        const embedError = new MessageEmbed().setAuthor(`❌ Erro ao deletar lisença.`).setDescription('Não encontramos uma licença no **ID: '+id+'** em nosso **banco de dados**.').setColor("#2f3136")
+        const embedError1 = new MessageEmbed().setAuthor(`❌ Erro ao deletar lisença.`).setDescription('Você não consegue fazer isso :( .').setColor("#2f3136")
+
         var info = {
-            "ip": ip,
             "idUser": id
         }
 
-        axios.post(urlDev + '/changeip', info)
+        if (!interaction.member.permissions.has('ADMINISTRATOR')) return interaction.reply({
+            embeds: [embedError1],
+            ephemeral: true
+        })
+
+        axios.post(urlDev + '/deletelisense', info)
         .then((res) => {
             interaction.reply({
                 embeds: [embed],
