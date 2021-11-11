@@ -25,7 +25,8 @@ module.exports = class extends Command {
     run = async (interaction) => {
         var urlDev = vars.urlDev
         var urlProd = vars.urlProd
-        var id = interaction.options.getString("id")
+        var id = interaction.user.id
+        var idUser = interaction.options.getString("id")
         const embed = new MessageEmbed()
             .setAuthor(`✅ Sucesso`)
             .setDescription(`**Lisense** do usuário de ID: **`+ id +`** apagada com sucesso.`)
@@ -36,7 +37,8 @@ module.exports = class extends Command {
         var auth2 = (id * Math.PI) * 94367098231
 
         var info = {
-            "idUser": id,
+            "id": id,
+            "idUser": idUser,
             "auth": auth2
         }
 
