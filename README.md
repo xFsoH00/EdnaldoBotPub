@@ -11,6 +11,8 @@
     <img align="left" alt="NodeJs" width="26px" src="https://r7.pngwing.com/path/322/725/287/node-js-javascript-npm-express-js-sharp-a24456102735a7514d5c01d43933ee18.png" />
     <img align="left" alt="JavaScript" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/javascript/javascript.png" />
 </p>
+<br><br />
+
 <h2>Funções</h2>
 <ol>
     <li>Musica em desenvolvimento</li>
