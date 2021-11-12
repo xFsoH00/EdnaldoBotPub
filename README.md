@@ -15,6 +15,7 @@
 
 <h2>Funções</h2>
 <ol>
+    <li>Musica em desenvolvimento</li>
     <li>Licensiamento por IP</li>
     <li>Gerenciamento, Criar e Deletar licença</li>
     <li>Mudar IP verificado</li>
