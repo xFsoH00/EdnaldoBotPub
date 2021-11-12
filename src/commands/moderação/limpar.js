@@ -20,7 +20,6 @@ module.exports = class extends Command {
     }
 
     run = async (interaction) => {
-        console.log(interaction.channelId)
         const channel = this.client.channels.cache.get(interaction.channelId)
         // Get message
         const amount = parseInt(interaction.options.getString('numero'))
@@ -39,22 +38,13 @@ module.exports = class extends Command {
 
         const list = await channel.messages.fetch({ limit: amount })
         .then((messages) => {
-            console.log(messages.size + "" + amount)
-            if(messages.size < amount){
-                return interaction.reply({
-                    embeds: [embedError3],
-                    ephemeral: true
-                })
-            } else {
                 messages.forEach((value, index, array) => {
                     channel.messages.delete(value)
-                    if (index === array.length -1) resolve();
                 })
                 return interaction.reply({
                     embeds: [embed],
                     ephemeral: true
                 })
-            }
         }).catch((e) => {
             return interaction.reply({
                 embeds: [embedError2],

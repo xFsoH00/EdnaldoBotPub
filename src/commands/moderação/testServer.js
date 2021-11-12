@@ -18,7 +18,7 @@ module.exports = class extends Command {
         var urlDev = vars.urlDev
         var urlProd = vars.urlProd
         const embed = new MessageEmbed()
-            .setAuthor(`✅ Conexão estabelecida com sucesso`)
+            .setAuthor(`✅ Conexão estabelecida com sucesso...`)
             .setDescription(`Servidor da API **online** e operante!`)
             .setColor("#2f3136")
         const embedError = new MessageEmbed().setAuthor(`❌ Bad conenction`).setDescription('O servidor da API está meio para baixo hoje :( .').setColor("#2f3136")
@@ -34,13 +34,13 @@ module.exports = class extends Command {
         .then((res) => {
             interaction.reply({
                 embeds: [embed],
-                ephemeral: true
+                ephemeral: false
             })
         })
         .catch((e) => {
             interaction.reply({
                 embeds: [embedError],
-                ephemeral: true
+                ephemeral: false
             })
         }).then((res) => {
         })

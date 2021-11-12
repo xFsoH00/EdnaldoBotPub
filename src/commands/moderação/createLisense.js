@@ -47,7 +47,7 @@ module.exports = class extends Command {
             ephemeral: true
         })
 
-        axios.post(urlProd + '/createlisense', info)
+        axios.post(urlDev + '/createlisense', info)
         .then((res) => {
             interaction.reply({
                 embeds: [embed],

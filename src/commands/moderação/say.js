@@ -37,7 +37,6 @@ module.exports = class extends Command {
             embeds: [embedError],
             ephemeral: true
         })
-
         const actionRow = new MessageActionRow()
             .addComponents([
                 new MessageSelectMenu()
@@ -50,7 +49,7 @@ module.exports = class extends Command {
                                     label: c.name,
                                     value: c.id
                                 }
-                            })
+                            }).slice(0,25)
                     )
             ])
 

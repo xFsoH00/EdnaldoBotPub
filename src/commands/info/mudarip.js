@@ -43,7 +43,7 @@ module.exports = class extends Command {
         }
 
 
-        axios.post(urlProd + '/changeip', info)
+        axios.post(urlDev + '/changeip', info)
         .then((res) => {
             interaction.reply({
                 embeds: [embed],
