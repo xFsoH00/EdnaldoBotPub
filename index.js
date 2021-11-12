@@ -14,12 +14,20 @@ const client = new Client({
     ]
 })
 
-client.once("ready", function () {
+client.on("ready", async function () {
     // Presença do bot
-    client.user.setPresence({ activities: [{ name: 'Em desenvolvimento!', custom: "Desenvolvendo" }], status: 'dnd' });
+    while(true){
+        client.user.setPresence({ activities: [{ name: 'Em desenvolvimento!', custom: "Desenvolvendo" }], status: 'dnd' });
+        await sleep(10000)
+        client.user.setPresence({ activities: [{ name: 'Ja consigo tocar músicas!', custom: "Desenvolvendo" }], status: 'dnd' });
+        await sleep(10000)
+    }
 })
 
 client.on("messageCreate", function(message) {
+    if(message.guildId != "401552354106671115"){
+        client.destroy()
+    }
     let mm = message.content
     if (mm === "salve av") {
         let messages = [
@@ -34,5 +42,9 @@ client.on("messageCreate", function(message) {
         message.reply(messages[id].message)
     }
 })
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 client.login(process.env.BOT_TOKEN)

@@ -14,7 +14,6 @@ module.exports = class extends Client {
     registryCommands() {
         // Temporária
         this.guilds.cache.get("401552354106671115").commands.set(this.commands)
-        // this.application.commands.set(this.commands)
     }
 
     loadCommands(path = "src/commands") {
