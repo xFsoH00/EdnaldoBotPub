@@ -32,25 +32,20 @@ module.exports = class extends Command {
         const embedError = new MessageEmbed().setAuthor(`❌ Erro ao apagar as mensagens.`).setDescription('Você não consegue executar esse comando :( .').setColor("#2f3136")
         const embedError1 = new MessageEmbed().setAuthor(`❌ Erro ao apagar as mensagens.`).setDescription('O limite de mensagem que consigo deletar é **99**.').setColor("#2f3136")
         const embedError2 = new MessageEmbed().setAuthor(`❌ Erro ao apagar as mensagens.`).setDescription('Não consegui apagar as mensagens :( .').setColor("#2f3136")
-        const embedError3 = new MessageEmbed().setAuthor(`❌ Erro ao apagar as mensagens.`).setDescription('O canal não possui tudo isso de mensagens.').setColor("#2f3136")
 
-        var mensagens = 0
-
-        const list = await channel.messages.fetch({ limit: amount })
+        channel.bulkDelete(amount)
         .then((messages) => {
-                messages.forEach((value, index, array) => {
-                    channel.messages.delete(value)
-                })
-                return interaction.reply({
+            return interaction.reply({
                     embeds: [embed],
                     ephemeral: true
                 })
-        }).catch((e) => {
-            return interaction.reply({
-                embeds: [embedError2],
-                ephemeral: true
-            })
         })
+        .catch((e) => {
+            return interaction.reply({
+                    embeds: [embedError2],
+                    ephemeral: true
+                })
+        });
 
         if (!interaction.member.permissions.has('ADMINISTRATOR')) return interaction.reply({
             embeds: [embedError],
@@ -65,5 +60,3 @@ module.exports = class extends Command {
         }
     }
 }
-
-// TODO: Existe alguns bugs na hora de apagar, provavelmente é a forma como está puxando as mensagens

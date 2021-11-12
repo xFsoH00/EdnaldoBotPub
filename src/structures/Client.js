@@ -1,5 +1,5 @@
 const { Client } = require("discord.js")
-const { readdirSync, statSync, readdir } = require("fs")
+const { readdirSync } = require("fs")
 const { join } = require("path")
 
 module.exports = class extends Client {
