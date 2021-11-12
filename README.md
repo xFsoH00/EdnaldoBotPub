@@ -3,7 +3,7 @@
     <h5 align="center">
         Se quiser contribuir me mande um email: contato.thiagotrevisan@gmail.com
     </h5>
-    <img align="center" alt="NodeJs" width="80px" src="https://pbs.twimg.com/profile_images/1293925081542995971/s2la3KS9_400x400.png" />
+    <img align="center" alt="NodeJs" width="200px" src="https://pbs.twimg.com/profile_images/1293925081542995971/s2la3KS9_400x400.png" />
 </div>
 <br><br />
 <h2 >Linguagens usadas</h2>
