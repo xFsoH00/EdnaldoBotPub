@@ -9,7 +9,7 @@ module.exports = class extends Command {
     constructor(client) {
         super(client, {
             name: "tocar",
-            description: "Deixar o ednaldo ser um Dj de qualidade.",
+            description: "Deixar o ednaldo ser um Dj de qualidade. Caso o servidor tenho ido de vapo",
             options: [
                 {
                     name: "link",

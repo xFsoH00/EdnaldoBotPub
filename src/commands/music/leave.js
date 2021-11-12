@@ -13,7 +13,7 @@ module.exports = class extends Command {
 
     run = (interaction) => {
         const channel = interaction.member.voice.channel
-
+        const player = this.client.manager.get(interaction.guild.id)
         const members = interaction.member.voice.channel.members
 
         var info = {
@@ -42,8 +42,7 @@ module.exports = class extends Command {
         members.forEach((value, index, array) => {
             itemProcessed = itemProcessed + 1;
             if(value.id == '743295235735683132'){
-                const connection = voiceDiscord.joinVoiceChannel(info)
-                connection.destroy()
+                player.destroy()
                 return interaction.reply({
                     embeds: [embed],
                     ephemeral: false

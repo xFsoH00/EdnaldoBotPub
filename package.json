@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "prod": "concurrently --kill-others \"java -jar ./src/lavalink/Lavalink.jar\"  \"nodemon index.js\"",
+    "java": "java -jar ./src/lavalink/Lavalink.jar"
   },
   "repository": {
     "type": "git",
@@ -21,8 +23,10 @@
   "dependencies": {
     "@discordjs/voice": "^0.6.0",
     "axios": "^0.24.0",
+    "concurrently": "^6.3.0",
     "discord.js": "^13.3.1",
     "dotenv": "^10.0.0",
+    "erela.js": "^2.3.3",
     "ffmpeg-static": "^4.4.0",
     "libsodium-wrappers": "^0.7.9",
     "nodemon": "^2.0.15",

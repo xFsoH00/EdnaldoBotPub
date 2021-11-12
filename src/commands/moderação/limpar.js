@@ -33,6 +33,18 @@ module.exports = class extends Command {
         const embedError1 = new MessageEmbed().setAuthor(`❌ Erro ao apagar as mensagens.`).setDescription('O limite de mensagem que consigo deletar é **99**.').setColor("#2f3136")
         const embedError2 = new MessageEmbed().setAuthor(`❌ Erro ao apagar as mensagens.`).setDescription('Não consegui apagar as mensagens :( .').setColor("#2f3136")
 
+        if(amount > 99){
+            return interaction.reply({
+                embeds: [embedError1],
+                ephemeral: true
+            })
+        }
+
+        if (!interaction.member.permissions.has('ADMINISTRATOR')) return interaction.reply({
+            embeds: [embedError],
+            ephemeral: true
+        })
+        
         channel.bulkDelete(amount)
         .then((messages) => {
             return interaction.reply({
@@ -46,17 +58,5 @@ module.exports = class extends Command {
                     ephemeral: true
                 })
         });
-
-        if (!interaction.member.permissions.has('ADMINISTRATOR')) return interaction.reply({
-            embeds: [embedError],
-            ephemeral: true
-        })
-
-        if(amount > 99){
-            return interaction.reply({
-                embeds: [embedError1],
-                ephemeral: true
-            })
-        }
     }
 }

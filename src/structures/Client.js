@@ -2,6 +2,8 @@ const { Client } = require("discord.js")
 const { readdirSync } = require("fs")
 const { join } = require("path")
 
+const erelaManager = require('./manager')
+
 module.exports = class extends Client {
     constructor (options) {
         super(options)
@@ -9,6 +11,7 @@ module.exports = class extends Client {
         this.commands = []
         this.loadCommands()
         this.loadEvents()
+        this.manager = erelaManager(this)
     }
 
     registryCommands() {
