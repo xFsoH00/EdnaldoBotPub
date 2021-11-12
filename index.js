@@ -28,18 +28,22 @@ client.on("messageCreate", function(message) {
     if(message.guildId != "401552354106671115"){
         client.destroy()
     }
-    let mm = message.content
-    if (mm === "salve av") {
-        let messages = [
-            {message: "Eae maluco firmeza?"}, //0
-            {message: "Dale mermão, veio comprar o que?"}, //1
-            {message: "Chora pra mim!"},
-            {message: "Fala comigo meu rei!"},
-            {message: "Fala memo."}
-        ]
-
-        var id = Math.floor(Math.random() * (4 - 0 + 1)) + 0;
-        message.reply(messages[id].message)
+    
+    if(message.author != '743295235735683132'){
+        let mm = message.content.toLowerCase()
+        if(mm === "vale nada") message.reply(`Vale tudo`)
+        if(mm === "vale tudo") message.reply(`Vale nada`)
+        if (mm === "salve ednaldo") {
+            let messages = [
+                {message: "Eae maluco firmeza?"}, //0
+                {message: "Dale mermão!"}, //1
+                {message: "Chora pra mim!"},
+                {message: "Fala comigo meu rei!"},
+                {message: "Opa!"}
+            ]
+            var id = Math.floor(Math.random() * (4 - 0 + 1)) + 0;
+            message.reply(messages[id].message)
+        }
     }
 })
 
