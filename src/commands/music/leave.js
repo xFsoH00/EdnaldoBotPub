@@ -39,10 +39,15 @@ module.exports = class extends Command {
 
         var itemProcessed = 0
 
+        const connection = voiceDiscord.joinVoiceChannel(info)
+
+        
+
         members.forEach((value, index, array) => {
             itemProcessed = itemProcessed + 1;
             if(value.id == '743295235735683132'){
-                player.destroy()
+                if(connection && !player) connection.destroy()
+                if(player) player.destroy()
                 return interaction.reply({
                     embeds: [embed],
                     ephemeral: false
