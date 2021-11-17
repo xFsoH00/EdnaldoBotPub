@@ -1,5 +1,6 @@
 const { Manager } = require('erela.js')
 const { MessageEmbed } = require("discord.js")
+const Spotify = require("erela.js-spotify")
 
 module.exports = (client) => {
     return  new Manager({
@@ -11,7 +12,13 @@ module.exports = (client) => {
         send: (id, payload) => {
         const guild = client.guilds.cache.get(id);
         if (guild) guild.shard.send(payload);
-        }
+        },
+        plugins: [
+            new Spotify({
+                clientID: "2a6a4cd84eb64c099863f07d9da1838d",
+                clientSecret: "30cf57db5b424004859b92a4a492bf36"
+            })
+        ]
     })
         .on("nodeConnect", node => console.log(`Servidor de música conectado com sucesso.`))
         .on("nodeError", (node, error) => console.log(

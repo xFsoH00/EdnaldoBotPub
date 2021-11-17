@@ -17,15 +17,15 @@ const client = new Client({
 client.on("ready", async function () {
     // Presença do bot
     while(true){
-        client.user.setPresence({ activities: [{ name: 'Em desenvolvimento!', custom: "Desenvolvendo" }], status: 'dnd' });
+        client.user.setPresence({ activities: [{ name: "Em desenvolvimento por: '𝙩𝙝#6656", type: "WATCHING" }], status: 'dnd' });
         await sleep(10000)
-        client.user.setPresence({ activities: [{ name: 'Ja consigo tocar músicas!', custom: "Desenvolvendo" }], status: 'dnd' });
+        client.user.setPresence({ activities: [{ name: 'Ja consigo tocar músicas!', type: "WATCHING" }], status: 'dnd' });
         await sleep(10000)
     }
 })
 
 client.on("messageCreate", function(message) {
-    if(message.guildId != "401552354106671115"){
+    if(message.guildId != "401552354106671115" && message.guildId != "897264861308928032"){
         client.destroy()
     }
     

@@ -1,6 +1,6 @@
 const Command = require("../../structures/Command")
+const { MessageEmbed } = require("discord.js");
 
-const { MessageEmbed } = require("discord.js")
 
 module.exports = class extends Command {
     constructor(client) {
@@ -10,7 +10,7 @@ module.exports = class extends Command {
             options : [
                 {
                     name: "musica",
-                    description: "Nome ou link da música a ser tocada.",
+                    description: "Nome ou link da música a ser tocada. (YT - SPTFY)",
                     type: 'STRING',
                     required: true
                 }
@@ -19,8 +19,16 @@ module.exports = class extends Command {
     }
 
     run = async (interaction) => {
+
+        const player = this.client.manager.create({
+            guild: interaction.guild.id,
+            voiceChannel: interaction.member.voice.channel.id,
+            textChannel: interaction.channel.id
+        })
         
         const search = interaction.options.getString('musica')
+
+        
 
         const embedError0 = new MessageEmbed()
         .setAuthor(`❌ Erro ao entrar na chamada.`)
@@ -58,10 +66,25 @@ module.exports = class extends Command {
         let res;
 
         try{
+            //! YOUTUBE
             res = await this.client.manager.search(search, interaction.user)
-
             if(res.loadType == "LOAD_FAILED") throw res.exception
-            else if(res.loadType == "PLAYLIST_LOADED") throw { message: "Playlists não são suportadas neste comando." }
+            else if(res.loadType == "PLAYLIST_LOADED"){
+                let musicCount = 0
+                await res.tracks.map((value, index, array) => {
+                    musicCount = musicCount + 1
+                    player.queue.add(res.tracks[index])
+                })
+                if (player.state === 'DISCONNECTED') await player.connect()
+                if(!player.playing && !player.paused) await player.play()
+                const embedFila =  new MessageEmbed()
+                .setDescription(`Foram adicionadas **${musicCount - 1}** músicas na fila.`)
+                .setColor("#2f3136")
+                return interaction.reply({
+                    embeds: [embedFila],
+                    ephemeral: false
+                })
+            }
         } catch (err){
             return interaction.reply({
                 embeds: [embedError],
@@ -74,13 +97,6 @@ module.exports = class extends Command {
                 embeds: [embedError0],
                 ephemeral: true
             })
-
-        const player = this.client.manager.create({
-            guild: interaction.guild.id,
-            voiceChannel: interaction.member.voice.channel.id,
-            textChannel: interaction.channel.id
-        })
-
 
         if (player.state === 'DISCONNECTED') player.connect()
         player.queue.add(res.tracks[0])

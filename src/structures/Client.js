@@ -1,6 +1,8 @@
 const { Client } = require("discord.js")
 const { readdirSync } = require("fs")
 const { join } = require("path")
+const vars = require('../config/const')
+
 
 const erelaManager = require('./manager')
 
@@ -16,7 +18,8 @@ module.exports = class extends Client {
 
     registryCommands() {
         // Temporária
-        this.guilds.cache.get("401552354106671115").commands.set(this.commands)
+        // this.guilds.cache.get(vars.guildDev).commands.set(this.commands)
+        this.guilds.cache.get(vars.guildProd).commands.set(this.commands)
     }
 
     loadCommands(path = "src/commands") {
@@ -38,11 +41,9 @@ module.exports = class extends Client {
 
         for (const category of categories) {
             const events = readdirSync(`${path}/${category}`)
-
             for (const event of events) {
                 const eventClass = require(join(process.cwd(), `${path}/${category}/${event}`))
                 const evt = new (eventClass)(this)
-
                 this.on(evt.name, evt.run)
             }
         }
