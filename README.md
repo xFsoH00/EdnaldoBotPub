@@ -16,7 +16,7 @@
 <h2>Funções</h2>
 <ol>
     <li>Musica com alguns bugs - Crash</li>
-    <li>Suporta youtube e spotify - PLaylists inclusas </li>
+    <li>Suporta youtube e spotify - Playlists inclusas </li>
     <li>Bot preparado para hospedagem na <b>Heroku</b></li>
 </ol>
 <br><br />
