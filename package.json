@@ -11,15 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Avenue-City/BotAV.git"
+    "url": "git+https://github.com/xFsoH00/EdnaldoBotPub.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Avenue-City/BotAV/issues"
+    "url": "https://github.com/xFsoH00/EdnaldoBotPub/issues"
   },
-  "homepage": "https://github.com/Avenue-City/BotAV#readme",
+  "homepage": "https://github.com/xFsoH00/EdnaldoBotPub#readme",
   "dependencies": {
     "@discordjs/voice": "^0.6.0",
     "axios": "^0.24.0",
