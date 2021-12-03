@@ -16,6 +16,14 @@
 <h2>Funções</h2>
 <ol>
     <li>Musica com alguns bugs - Crash</li>
-    <li>Bot preparado para hospedagem na <b>Heroku</li>
+    <li>Suporta youtube e spotify - PLaylists inclusas </li>
+    <li>Bot preparado para hospedagem na <b>Heroku</b></li>
+</ol>
+<br><br />
+<h2>Importante</h2>
+<ol>
+    <li>Necessário ter java instalado - Java desenvolvido (AZUL)</li>
+    <li>Lavalink e erela manager utilizados</li>
+    <li>Discord.js - versão <b>13</b></li>
 </ol>
 <br><br />
