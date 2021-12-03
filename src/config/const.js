@@ -1,6 +1,6 @@
 
-const guildDev = "89726481308928032"; //! Versão para Desenvolvimento
-const guildProd = ""; //Versão para produção
+const guildDev = "idDaGuild"; //! Versão para Desenvolvimento
+const guildProd = "idDaGuild"; //Versão para produção
 
 module.exports = {
     guildDev,

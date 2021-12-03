@@ -18,7 +18,7 @@ module.exports = class extends Client {
 
     registryCommands() {
         // Temporária
-        this.guilds.cache.get(vars.guildDev).commands.set(this.commands)
+        this.guilds.cache.get(vars.guildDev).commands.set(this.commands) // ! Lembrar de colocar o id do discord em const.js
         // this.guilds.cache.get(vars.guildProd).commands.set(this.commands)
     }
 
