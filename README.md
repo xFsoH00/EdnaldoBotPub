@@ -16,5 +16,6 @@
 <h2>Funções</h2>
 <ol>
     <li>Musica com alguns bugs - Crash</li>
+    <li>Bot preparado para hospedagem na <b>Heroku</li>
 </ol>
 <br><br />
