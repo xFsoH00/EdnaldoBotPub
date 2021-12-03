@@ -25,10 +25,6 @@ client.on("ready", async function () {
 })
 
 client.on("messageCreate", function(message) {
-    if(message.guildId != "idDaGuild"){ // Id do seu discord(Guild)
-        client.destroy()
-    }
-    
     if(message.author != 'idDoBot'){ // Mensagens que o bot pode responder
         let mm = message.content.toLowerCase()
         if(mm === "vale nada") message.reply(`Vale tudo`)
