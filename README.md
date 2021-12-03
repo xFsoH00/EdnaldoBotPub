@@ -15,10 +15,6 @@
 
 <h2>Funções</h2>
 <ol>
-    <li>Musica em desenvolvimento</li>
-    <li>Licensiamento por IP</li>
-    <li>Gerenciamento, Criar e Deletar licença</li>
-    <li>Mudar IP verificado</li>
-    <li>Backend desenvovido a base de REST API</li>
+    <li>Musica com alguns bugs - Crash</li>
 </ol>
 <br><br />

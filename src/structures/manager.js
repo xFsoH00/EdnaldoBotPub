@@ -15,8 +15,8 @@ module.exports = (client) => {
         },
         plugins: [
             new Spotify({
-                clientID: "2a6a4cd84eb64c099863f07d9da1838d",
-                clientSecret: "30cf57db5b424004859b92a4a492bf36"
+                clientID: "clientIdspotify",
+                clientSecret: "clientSecret"
             })
         ]
     })

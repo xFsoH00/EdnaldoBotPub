@@ -17,7 +17,7 @@ const client = new Client({
 client.on("ready", async function () {
     // Presença do bot
     while(true){
-        client.user.setPresence({ activities: [{ name: "Em desenvolvimento por: '𝙩𝙝#6656", type: "WATCHING" }], status: 'dnd' });
+        client.user.setPresence({ activities: [{ name: "By: '𝙩𝙝#6656", type: "WATCHING" }], status: 'dnd' });
         await sleep(10000)
         client.user.setPresence({ activities: [{ name: 'Ja consigo tocar músicas!', type: "WATCHING" }], status: 'dnd' });
         await sleep(10000)
@@ -25,11 +25,11 @@ client.on("ready", async function () {
 })
 
 client.on("messageCreate", function(message) {
-    if(message.guildId != "401552354106671115" && message.guildId != "897264861308928032"){
+    if(message.guildId != "idDaGuild"){ // Id do seu discord(Guild)
         client.destroy()
     }
     
-    if(message.author != '743295235735683132'){
+    if(message.author != 'idDoBot'){ // Mensagens que o bot pode responder
         let mm = message.content.toLowerCase()
         if(mm === "vale nada") message.reply(`Vale tudo`)
         if(mm === "vale tudo") message.reply(`Vale nada`)

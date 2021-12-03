@@ -18,8 +18,8 @@ module.exports = class extends Client {
 
     registryCommands() {
         // Temporária
-        // this.guilds.cache.get(vars.guildDev).commands.set(this.commands)
-        this.guilds.cache.get(vars.guildProd).commands.set(this.commands)
+        this.guilds.cache.get(vars.guildDev).commands.set(this.commands)
+        // this.guilds.cache.get(vars.guildProd).commands.set(this.commands)
     }
 
     loadCommands(path = "src/commands") {

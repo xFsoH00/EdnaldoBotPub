@@ -41,11 +41,13 @@ module.exports = class extends Command {
 
         const connection = voiceDiscord.joinVoiceChannel(info)
 
-        members.forEach((value, index, array) => {
+        members.forEach((value, index, array) =>  {
             itemProcessed = itemProcessed + 1;
             if(value.id == '743295235735683132'){
-                if(connection && !player) connection.destroy()
-                if(player) player.destroy()
+                if(player) {
+                    player.stop()
+                    player.queue.clear()
+                }
                 return interaction.reply({
                     embeds: [embed],
                     ephemeral: false
